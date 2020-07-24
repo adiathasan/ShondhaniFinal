@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Apply for job by Colorlib</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/form (2).css' %}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">Requisition Form Volunteer</h2>
+                </div>
+                <div class="card-body">
+                  {% for message in messages %}
+                  <div class="value input--style-6">
+                       {{message}}
+                  </div>
+                   {% endfor %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-row">
+                            <div class="name">Full name</div>
+                            <div class="value input--style-6">
+                                {{form.name}} <span style="color: red;">{{form.name.errors}}</span>
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Blood Group</div>
+                            <div class="value">
+                                <div class="input-group input&#45;&#45;style-6">
+                                    {{form.blood_group}}
+                                    <span style="color: red;">{{form.blood_group.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Emergency contact no</div>
+                            <div class="value">
+                                <div class="input-group input&#45;&#45;style-6">
+                                    {{form.emergency_contact}}<span style="color: red;">{{form.emergency_contact.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Admission registration no</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.admission_registration_no}}<span style="color: red;">{{form.admission_registration_no.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Area</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.area}}<span style="color: red;">{{form.area.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Hospital name</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.hospital_name}}<span style="color: red;">{{form.hospital_name.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="form-row">
+                            <div class="name">Image of requisition</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.plasma_req_form_img}}<span style="color: red;">{{form.plasma_req_form_img.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="form-row">
+                            <div class="name">comment of patient</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.comment_of_patient}}<span style="color: red;">{{form.comment_of_patient.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">reference</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.reference}}<span style="color: red;">{{form.reference.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">emergency-contact persons' name</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.emergency_contact_persons_name}}
+                                    <span style="color: red;">{{form.emergency_contact_persons_name.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="form-row">
+                            <div class="name">volunteer name</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.vol_name}}<span style="color: red;">{{form.vol_name.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="form-row">
+                            <div class="name">unit name</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.unit_name}}<span style="color: red;">{{form.unit_name.errors}}</span>
+                                </div>
+                            </div>
+                             <div class="value">
+                                <button class="btn  btn--blue-2" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+
+    <!-- Main JS-->
+    <script src="{% static 'js/global.js' %}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
