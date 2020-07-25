@@ -25,7 +25,6 @@
     <ul class="nav">
       <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome {{request.user}}</span><b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
           <li class="divider"></li>
           <li><a href="{% url 'register' %}"><i class="icon-key"></i> Register</a></li>
         </ul>
@@ -50,7 +49,9 @@
       <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span class="label label-important">2</span></a>
         <ul>
           <li><a href="{% url 'form1' %}">Basic Form</a></li>
-          <li><a href="{% url 'form2' %}">Form with Wizard</a></li>
+          <li><a href="{% url 'triVol' %}">Triage Form</a></li>
+          <li><a href="{% url 'reqVol' %}">Requisition Form (V)</a></li>
+          <li><a href="{% url 'donVol' %}">Donor Form (V)</a></li>
         </ul>
       </li>
       <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Extra</span> <span class="label label-important">1</span></a>

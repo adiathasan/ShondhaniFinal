@@ -30,21 +30,10 @@
 						<span id="responsiveFlag"></span>
 					</div>
 					<div class="grid_4">
-						<a href="#" class="donate">Donate</a>
-						<div class="text1">We can change the life of those who have no hope</div>
-						<p>Etiam dui eros, laoreet sit amet est vel,modo venenatis eros. Fusce adipiscing quam id riss sagittis, non consequat lacus interdum. Proin  tincidunt nulla, eu sodales arcu.</p>
-						Quisquerra nulla nunc, eu ultrices libero ultricies eget. Phasellus accumsan justo vitae feugiat placerat. Praesent vel ultrices velit. Suspendisse risus justo, lacinia vitae eleifend
+						<a href="{% url 'donPub' %}" class="donate">Donate</a>
+						<div class="text1">We can change the life</div>
+						<p>spendisse risus justo, lacinia vitae eleifend</p>
 					</div>
-					<div class="clear"></div>
-					<div class="grid_12">
-						<h2>Our Units</h2>
-						{% for unit in units %}
-						<div id="owl">
-							<div class="item">
-								<a href="#owl">{{unit.regional_field}}</a>
-							</div>
-						{% endfor %}
-						</div>
 					</div>
 				</div>
 			</div>
@@ -69,3 +58,6 @@
 		</footer>
 
 
+	</body>
+
+</html>

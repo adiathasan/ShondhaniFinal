@@ -25,10 +25,29 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/"><strong style="color: red;">SHONDHANI</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'reqPub' %}">Plasma Bank</a>
+          </li>
+          <li class="nav-item dropdown">
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
             <div class="card-heading">
-                <h2 class="title">Triage Form</h2>
+                <h2 class="title">Request plasma</h2>
             </div>
             <div class="card card-6">
                 <div class="card-body">
@@ -40,31 +59,39 @@
                             {% endfor %}
                         </div>
                         <div class="form-row">
-                            <div class="name">Patient name</div>
+                            <div class="name">Full name</div>
                             <div class="value input--style-6">
                                 {{form.name}} <span style="color: red;">{{form.name.errors}}</span>
                             </div>
 
                         </div>
                         <div class="form-row">
-                            <div class="name">Sex</div>
+                            <div class="name">Blood Group</div>
                             <div class="value">
                                 <div class="input-group input&#45;&#45;style-6">
-                                    {{form.sex}}
-                                    <span style="color: red;">{{form.sex.errors}}</span>
+                                    {{form.blood_group}}
+                                    <span style="color: red;">{{form.blood_group.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Age</div>
+                            <div class="name">Emergency contact no</div>
                             <div class="value">
                                 <div class="input-group input&#45;&#45;style-6">
-                                    {{form.age}}<span style="color: red;">{{form.age.errors}}</span>
+                                    {{form.emergency_contact}}<span style="color: red;">{{form.emergency_contact.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">area</div>
+                            <div class="name">Admission registration no</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.admission_registration_no}}<span style="color: red;">{{form.admission_registration_no.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Area</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.area}}<span style="color: red;">{{form.area.errors}}</span>
@@ -72,48 +99,41 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">hospital name</div>
+                            <div class="name">Hospital name</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.hospital_name}}<span style="color: red;">{{form.hospital_name.errors}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">contact number</div>
+                       <div class="form-row">
+                            <div class="name">Image of requisition</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.contact_number}}<span style="color: red;">{{form.contact_number.errors}}</span>
+                                    {{form.plasma_req_form_img}}<span style="color: red;">{{form.plasma_req_form_img.errors}}</span>
                                 </div>
                             </div>
                         </div>
                                                 <div class="form-row">
-                            <div class="name">first positive</div>
+                            <div class="name">comment of patient</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.first_positive}}<span style="color: red;">{{form.first_positive.errors}}</span>
+                                    {{form.comment_of_patient}}<span style="color: red;">{{form.comment_of_patient.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">hospital admit dt</div>
+                            <div class="name">emergency-contact persons' name</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.hospital_admit_dt}}<span style="color: red;">{{form.hospital_admit_dt.errors}}</span>
+                                    {{form.emergency_contact_persons_name}}
+                                    <span style="color: red;">{{form.emergency_contact_persons_name.errors}}</span>
                                 </div>
                             </div>
+                       <div class="value">
+                            <button class="btn  btn-info btn-lg" type="submit">Submit</button>
+                         </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">hospital release dt</div>
-                            <div class="value">
-                                <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.hospital_release_dt}}<span style="color: red;">{{form.hospital_release_dt.errors}}</span>
-                                </div>
-                            </div>
-                        </div>
-                             <div class="value">
-                                <button class="btn  btn--blue-2" type="submit">Submit</button>
-                            </div>
                     </form>
                 </div>
             </div>
@@ -126,18 +146,8 @@
 
     <!-- Main JS-->
     <script src="{% static 'js/global.js' %}"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.datepicker').datepicker();
-    });
-    </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
 <!-- end document-->
-
-

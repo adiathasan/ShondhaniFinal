@@ -11,61 +11,169 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Apply for job by Colorlib</title>
+    <title></title>
 
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Main CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="{% static 'css/form (2).css' %}" rel="stylesheet" media="all">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/"><strong style="color: red;">SHONDHANI</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'reqPub' %}">Plasma Bank</a>
+          </li>
+          <li class="nav-item dropdown">
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
+            <div class="card-heading">
+                <h2 class="title">Donor Form</h2>
+            </div>
             <div class="card card-6">
-                <div class="card-heading">
-                    <h2 class="title">Apply for job</h2>
-                </div>
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
                         <div class="form-row">
+                            {% for message in messages %}
+                            <span style="color: green;">{{message}}</span>
+                            {% endfor %}
+                        </div>
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="name">Motivation Level</div>
+                            <div class="value input--style-6">
+                                {{form.motivation_level}} <span style="color: red;">{{form.motivation_level.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="name">Full name</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="full_name">
+                            <div class="value input--style-6">
+                                {{form.name}} <span style="color: red;">{{form.name.errors}}</span>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Email address</div>
+                            <div class="name">sex</div>
+                            <div class="value input--style-6">
+                                {{form.sex}} <span style="color: red;">{{form.sex.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Conceived Before (Females*)</div>
+                            <div class="value input--style-6">
+                                {{form.Conceived_before}} <span style="color: red;">{{form.Conceived_before.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Age</div>
+                            <div class="value input--style-6">
+                                {{form.age}} <span style="color: red;">{{form.age.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Blood Group</div>
                             <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                <div class="input-group input&#45;&#45;style-6">
+                                    {{form.blood_group}}
+                                    <span style="color: red;">{{form.blood_group.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Message</div>
+                            <div class="name">contact no</div>
                             <div class="value">
-                                <div class="input-group">
-                                    <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+                                <div class="input-group input&#45;&#45;style-6">
+                                    {{form.contact_number}}<span style="color: red;">{{form.contact_number.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Upload CV</div>
+                            <div class="name">address</div>
                             <div class="value">
-                                <div class="input-group js-input-file">
-                                    <input class="input-file" type="file" name="file_cv" id="file">
-                                    <label class="label--file" for="file">Choose file</label>
-                                    <span class="input-file__info">No file chosen</span>
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.address}}<span style="color: red;">{{form.address.errors}}</span>
                                 </div>
-                                <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Area</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.area}}<span style="color: red;">{{form.area.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">first_positive</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.first_positive}}<span style="color: red;">{{form.first_positive.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="form-row">
+                            <div class="name">first_negative</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.first_negative}}<span style="color: red;">{{form.first_negative.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">recovery_date</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.recovery_date}}<span style="color: red;">{{form.recovery_date.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">disease</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.disease}}<span style="color: red;">{{form.disease.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">occupation</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.occupation}}
+                                    <span style="color: red;">{{form.occupation.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">comment of donor</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.comment_of_donor}}<span style="color: red;">{{form.comment_of_donor.errors}}</span>
+                                </div>
+                            </div>
+                             <div class="value">
+                                <button class="btn  btn--blue-2" type="submit">Submit</button>
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
                 </div>
             </div>
         </div>
@@ -77,6 +185,15 @@
 
     <!-- Main JS-->
     <script src="{% static 'js/global.js' %}"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker();
+    });
+    </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

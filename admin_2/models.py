@@ -37,7 +37,7 @@ class donorInfo(models.Model):
     contact_number = models.CharField(blank=False, null=True, max_length=14)
     address = models.TextField(blank=False, null=False)
     comment_of_donor = models.TextField(null=True, blank=True)
-    disease = models.CharField(max_length=50, null=True, blank=False)
+    disease = models.CharField(max_length=300, null=True, blank=False)
     hospital_name = models.CharField(max_length=200, blank=True, null=True)
     first_positive = models.DateTimeField(blank=False, null=True)
     first_negative = models.DateTimeField(blank=False, null=True)

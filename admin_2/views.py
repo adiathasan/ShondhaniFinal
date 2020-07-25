@@ -78,13 +78,14 @@ def formAdmin(request):
 
 
 @login_required(login_url='login')
-def formAdmin2(request):
+def TriageVol(request):
     form = TriageFormVolunteer(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect("homeAdmin")
+        form = TriageFormVolunteer()
+        messages.success(request, "Submitted successfully")
     context = {'form': form}
-    template = 'admin_2/form-wizard.html'
+    template = 'admin_2/form1.html'
     return render(request, template, context)
 
 
@@ -115,10 +116,10 @@ def homePublic(request):
 
 def plasmaForm(request):
     form = DonorFormPublic(request.POST or None)
-    print(request.POST.get('name'), form.is_valid())
     if form.is_valid():
         form.save()
-        return redirect('homePublic')
+        messages.success(request, "Form submitted. Thank You.")
+        form = DonorFormPublic()
     context = {'form': form}
     template = 'admin_2/form3.html'
     return render(request, template, context)
@@ -128,7 +129,30 @@ def reqFormVol(request):
     form = RequisitionFormVolunteer(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('homePublic')
+        form = RequisitionFormVolunteer()
+        messages.success(request, "Form Submitted successfully")
     context = {'form': form}
     template = 'admin_2/reqVol.html'
+    return render(request, template, context)
+
+
+def reqFormPub(request):
+    form = RequisitionFormPublic(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        form = RequisitionFormPublic()
+        messages.success(request, "Form submitted successfully")
+    context = {'form': form}
+    template = 'admin_2/reqPub.html'
+    return render(request, template, context)
+
+
+def donorVol(request):
+    form = DonorFormVolunteer(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        form = DonorFormVolunteer()
+        messages.success(request, "Form submitted successfully")
+    context = {'form': form}
+    template = 'admin_2/donVol.html'
     return render(request, template, context)

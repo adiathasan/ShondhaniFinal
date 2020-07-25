@@ -65,7 +65,7 @@ class DonorFormPublic(forms.ModelForm):
     first_positive = forms.DateField(widget=DateInput(), label="First positive date")
     first_negative = forms.DateField(widget=DateInput(), label="First negative date")
     recovery_date = forms.DateField(widget=DateInput(), label="Full recovery date")
-    choices=(
+    choices = (
         ('No disease', "No disease"),
         ('Diabetes', "Diabetes"),
         ('High Blood Pressure', "High Blood Pressure"),
@@ -89,10 +89,9 @@ class DonorFormPublic(forms.ModelForm):
 
     def clean_disease(self):
         disease = self.cleaned_data.get('disease')
-        print(disease, type(disease))
         all_disease = []
         for _ in disease:
-            if _ == 'No disease':
+            if _ == 'No disease' and len(disease) > 1:
                 raise forms.ValidationError("You can not select option 'No disease' and others at the same time")
             all_disease.append(_)
         return " || ".join(all_disease)
@@ -135,6 +134,23 @@ class DonorFormPublic(forms.ModelForm):
 
 
 class DonorFormVolunteer(forms.ModelForm):
+    first_positive = forms.DateField(widget=DateInput(), label="First positive date")
+    first_negative = forms.DateField(widget=DateInput(), label="First negative date")
+    recovery_date = forms.DateField(widget=DateInput(), label="Full recovery date")
+    choices = (
+        ('No disease', "No disease"),
+        ('Diabetes', "Diabetes"),
+        ('High Blood Pressure', "High Blood Pressure"),
+        ('Kidney Disease', "Kidney Disease"),
+        ('Heart Disease', "Heart Disease"),
+        ('Respiratory Distress', "Respiratory Distress")
+    )
+    disease = forms.MultipleChoiceField(
+        required=True,
+        widget=forms.CheckboxSelectMultiple,
+        choices=choices,
+    )
+
     class Meta:
         model = donorInfo
 
@@ -143,6 +159,15 @@ class DonorFormVolunteer(forms.ModelForm):
                   'area', 'first_positive', 'first_negative', 'recovery_date',
                   'disease', 'occupation', 'comment_of_donor', 'volunteer_name',
                   'regional_field']
+
+    def clean_disease(self):
+        disease = self.cleaned_data.get('disease')
+        all_disease = []
+        for _ in disease:
+            if _ == 'No disease' and len(disease) > 1:
+                raise forms.ValidationError("You can not select option 'No disease' and others at the same time")
+            all_disease.append(_)
+        return " || ".join(all_disease)
 
     def clean_name(self, *args, **kwargs):
         name = self.cleaned_data.get('name')

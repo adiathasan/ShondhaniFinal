@@ -18,7 +18,7 @@
 
     <!-- Main CSS-->
     <link href="{% static 'css/form (2).css' %}" rel="stylesheet" media="all">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -28,43 +28,74 @@
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
             <div class="card-heading">
-                <h2 class="title">Triage Form</h2>
+                    <h2 class="title">Donor Form</h2>
             </div>
             <div class="card card-6">
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-row">
+                         <div class="form-row">
                             {% for message in messages %}
                             <span style="color: green;">{{message}}</span>
                             {% endfor %}
                         </div>
+                        {% csrf_token %}
                         <div class="form-row">
-                            <div class="name">Patient name</div>
+                            <div class="name">Motivation Level</div>
+                            <div class="value input--style-6">
+                                {{form.motivation_level}} <span style="color: red;">{{form.motivation_level.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Full name</div>
                             <div class="value input--style-6">
                                 {{form.name}} <span style="color: red;">{{form.name.errors}}</span>
                             </div>
-
                         </div>
                         <div class="form-row">
-                            <div class="name">Sex</div>
-                            <div class="value">
-                                <div class="input-group input&#45;&#45;style-6">
-                                    {{form.sex}}
-                                    <span style="color: red;">{{form.sex.errors}}</span>
-                                </div>
+                            <div class="name">sex</div>
+                            <div class="value input--style-6">
+                                {{form.sex}} <span style="color: red;">{{form.sex.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Conceived Before (Females*)</div>
+                            <div class="value input--style-6">
+                                {{form.Conceived_before}} <span style="color: red;">{{form.Conceived_before.errors}}</span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Age</div>
+                            <div class="value input--style-6">
+                                {{form.age}} <span style="color: red;">{{form.age.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Blood Group</div>
                             <div class="value">
                                 <div class="input-group input&#45;&#45;style-6">
-                                    {{form.age}}<span style="color: red;">{{form.age.errors}}</span>
+                                    {{form.blood_group}}
+                                    <span style="color: red;">{{form.blood_group.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">area</div>
+                            <div class="name">contact no</div>
+                            <div class="value">
+                                <div class="input-group input&#45;&#45;style-6">
+                                    {{form.contact_number}}<span style="color: red;">{{form.contact_number.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">address</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.address}}<span style="color: red;">{{form.address.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Area</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.area}}<span style="color: red;">{{form.area.errors}}</span>
@@ -72,48 +103,69 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">hospital name</div>
-                            <div class="value">
-                                <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.hospital_name}}<span style="color: red;">{{form.hospital_name.errors}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">contact number</div>
-                            <div class="value">
-                                <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.contact_number}}<span style="color: red;">{{form.contact_number.errors}}</span>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="form-row">
-                            <div class="name">first positive</div>
+                            <div class="name">first_positive</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.first_positive}}<span style="color: red;">{{form.first_positive.errors}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">hospital admit dt</div>
+                                                <div class="form-row">
+                            <div class="name">first_negative</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.hospital_admit_dt}}<span style="color: red;">{{form.hospital_admit_dt.errors}}</span>
+                                    {{form.first_negative}}<span style="color: red;">{{form.first_negative.errors}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">hospital release dt</div>
+                            <div class="name">recovery_date</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.hospital_release_dt}}<span style="color: red;">{{form.hospital_release_dt.errors}}</span>
+                                    {{form.recovery_date}}<span style="color: red;">{{form.recovery_date.errors}}</span>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class="name">disease</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.disease}}<span style="color: red;">{{form.disease.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">occupation</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.occupation}}
+                                    <span style="color: red;">{{form.occupation.errors}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">comment of donor</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.comment_of_donor}}<span style="color: red;">{{form.comment_of_donor.errors}}</span>
+                                </div>
+                            </div>
+                            <div class="name">volunteer name</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.volunteer_name}}<span style="color: red;">{{form.volunteer_name.errors}}</span>
+                                </div>
+                            </div>
+                            <div class="name">Unit</div>
+                            <div class="value">
+                                <div class="input-group js-input-file input&#45;&#45;style-6">
+                                    {{form.regional_field}}<span style="color: red;">{{form.regional_field.errors}}</span>
+                                </div>
+                            </div>
                              <div class="value">
                                 <button class="btn  btn--blue-2" type="submit">Submit</button>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -126,6 +178,7 @@
 
     <!-- Main JS-->
     <script src="{% static 'js/global.js' %}"></script>
+
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
@@ -139,5 +192,3 @@
 
 </html>
 <!-- end document-->
-
-

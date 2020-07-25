@@ -10,42 +10,18 @@
 		<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
 		<link rel="stylesheet" href="{% static 'css/slider.css' %}">
 		<link rel="stylesheet" href="{% static 'css/style (3).css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+		<link href="{% static 'css/form (2).css' %}" rel="stylesheet" media="all">
+		<style>
+			.shondhani {
+			  color: red;
+			}
+
+		</style>
 	</head>
 	<body class="page1" id="top">
 <!--==============================header=================================-->
-		<header>
-			<div class="clear"></div>
-			<div class="container_12">
-				<div class="grid_12">
-					<h1 class="shondhani"><strong>SHONDHANI</strong>
-<!--						<a href="index.html">-->
-<!--							<img src="images/logo.png" alt="Your Happy Family">-->
-<!--						</a>-->
-					</h1>
-					<div class="menu_block">
-						<nav class="horizontal-nav full-width horizontalNav-notprocessed">
-							<ul class="sf-menu">
-								<li class="current"><a href="/">Home</a></li>
-								<li><a href="{% url 'plasmaForm' %}">PlasmaBank</a></li>
-								<li><a href="">Triage</a></li>
-								<li><a href="{% url 'reqVol' %}">Requisition(v) </a></li>
-								<li><a href="">Contacts</a></li>
-							</ul>
-						</nav>
-						<div class="clear"></div>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-		</header>
-<br><br><br>
-<!--==============================Content=================================-->
-
-            {% block content2 %}
-
-            {% endblock %}
-<!--==============================footer=================================-->
-				<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/jquery.js' %}"></script>
 		<script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>
 		<script src="{% static 'js/script.js' %}"></script>
 		<script src="{% static 'js/jquery.ui.totop.js' %}"></script>
@@ -120,12 +96,40 @@
 		<script src="{% static 'js/html5shiv.js' %}"></script>
 		<link rel="stylesheet" media="screen" href="{% static 'css/ie.css' %}">
 		<![endif]-->
-		<style>
-			.shondhani {
-			  color: red;
-			}
 
-		</style>
+		<header>
+			<div class="clear"></div>
+			<div class="container_12">
+				<div class="grid_12">
+					<h1 class="shondhani"><strong>SHONDHANI</strong>
+<!--						<a href="index.html">-->
+<!--							<img src="images/logo.png" alt="Your Happy Family">-->
+<!--						</a>-->
+					</h1>
+					<div class="menu_block">
+						<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+							<ul class="sf-menu">
+								<li class="current"><a href="/">Home</a></li>
+								<li><a href="{% url 'reqPub' %}">PlasmaBank</a></li>
+								<li><a href="{% url 'triVol' %}">Triage</a></li>
+								<li><a href="{% url 'donPub' %}">Donate </a></li>
+								<li><a href="">Contacts</a></li>
+							</ul>
+						</nav>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</header>
+<br><br><br>
+<!--==============================Content=================================-->
+
+            {% block content2 %}
+
+            {% endblock %}
+<!--==============================footer=================================-->
+
 	<style>
 		/* Style The Dropdown Button */
 		.dropbtn {
