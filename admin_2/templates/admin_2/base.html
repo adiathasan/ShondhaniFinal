@@ -34,27 +34,27 @@
   </div>
   <!--close-top-Header-menu-->
   <!--start-top-serch-->
-  <div id="search">
-    <input type="text" placeholder="Search here..."/>
-    <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
-  </div>
   <!--close-top-serch-->
   <!--sidebar-menu-->
   <div id="sidebar"><a href="{% url 'homeAdmin' %}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
       <li class="active"><a href="{% url 'homeAdmin' %}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-
-      <li><a href="{% url 'donorTable' %}"><i class="icon icon-th"></i> <span>Tables</span></a></li>
-
-      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span class="label label-important">2</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Tables</span></a>
+          <ul>
+            <li><a href="{% url 'donorTable' %}"><span>Motivated Donor Table</span></a></li>
+          <li><a href="{% url 'reqTable' %}"><span>Requester Table</span></a></li>
+            <li><a href="{% url 'triageTable' %}"><span>Triage Table</span></a></li>
+            <li><a href="{% url 'donReqTable' %}"><span>Donor-requester match Table</span></a></li>
+          </ul>
+        </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span></a>
         <ul>
-          <li><a href="{% url 'form1' %}">Basic Form</a></li>
           <li><a href="{% url 'triVol' %}">Triage Form</a></li>
           <li><a href="{% url 'reqVol' %}">Requisition Form (V)</a></li>
           <li><a href="{% url 'donVol' %}">Donor Form (V)</a></li>
         </ul>
       </li>
-      <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Extra</span> <span class="label label-important">1</span></a>
+      <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Extra</span></a>
         <ul>
 
           <li><a href="{% url 'calendar' %}">Calendar</a></li>
@@ -63,10 +63,9 @@
       </li>
       <li class="content"> <span>Disk Space Usage</span>
         <div class="progress progress-mini active progress-striped">
-          <div style="width: 87%;" class="bar"></div>
+          <div style="width: 47%;" class="bar"></div>
         </div>
-        <span class="percent">87%</span>
-        <div class="stat">604.44 / 4000 MB</div>
+        <span class="percent">47%</span>
       </li>
     </ul>
   </div>
@@ -95,7 +94,7 @@
 <script src="{% static 'js/matrix.js' %}"></script>
 <script src="{% static 'js/matrix.dashboard.js' %}"></script>
 <script src="{% static 'js/jquery.gritter.min.js' %}"></script>
-<script src="{% static 'js/matrix.interface.js' %}"></script>
+<!--<script src="{% static 'js/matrix.interface.js' %}"></script>-->
 <script src="{% static 'js/matrix.chat.js' %}"></script>
 <script src="{% static 'js/jquery.validate.js' %}"></script>
 <script src="{% static 'js/matrix.form_validation.js' %}"></script>

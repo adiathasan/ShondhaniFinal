@@ -1,9 +1,10 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import *
+from django.views import View
 from django.forms.models import inlineformset_factory
 
 
@@ -20,15 +21,17 @@ def homeAdmin(request):
     o_neg = allDonor.filter(blood_group='O-').count()
     b_pos = allDonor.filter(blood_group='B+').count()
     b_neg = allDonor.filter(blood_group='B-').count()
+    ava_don = allDonor.filter(donor_status=True).count()
     context = {'a_pos': a_pos, 'a_neg': a_neg, 'ab_pos': ab_pos, 'ab_neg': ab_neg, 'o_pos': o_pos,
-               'o_neg': o_neg, 'b_pos': b_pos, 'b_neg': b_neg, 'allDonor': allDonor_count, 'all_notice': all_notice}
+               'o_neg': o_neg, 'b_pos': b_pos, 'b_neg': b_neg, 'allDonor': allDonor_count,
+               'all_notice': all_notice, 'ava_don': ava_don}
     template = 'admin_2/index.html'
     return render(request, template, context)
 
 
 @login_required(login_url='login')
 def donorTable(request):
-    info = donorInfo.objects.all()
+    info = MotivatedDonorTable.objects.all()
     context = {'donor_list': info}
     template = 'admin_2/tables.html'
     return render(request, template, context)
@@ -98,7 +101,7 @@ def calendar(request):
 
 @login_required(login_url='login')
 def viewDetail(request, pk):
-    donor_detail = get_object_or_404(id=pk)
+    donor_detail = donorInfo.objects.get(id=pk)
     context = {'donor': donor_detail}
     template = 'admin_2/donor-detail.html'
     return render(request, template, context)
@@ -156,3 +159,86 @@ def donorVol(request):
     context = {'form': form}
     template = 'admin_2/donVol.html'
     return render(request, template, context)
+
+
+def motDonForm(request):
+    form = MotivatedDonorFormVolunteer(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        form = DonorFormVolunteer()
+        messages.success(request, "Form submitted successfully")
+    context = {'form': form}
+    template = 'admin_2/motDon.html'
+    return render(request, template, context)
+
+
+def triageTable(request):
+    info = triagePatient.objects.all()
+    context = {'triage_list': info}
+    template = 'admin_2/triTable.html'
+    return render(request, template, context)
+
+
+def reqTable(request):
+    info = Requester.objects.all()
+    context = {'req_list': info}
+    template = 'admin_2/reqTable.html'
+    return render(request, template, context)
+
+
+def donReqTable(request):
+    info = DonorRequesterRelation.objects.all()
+    context = {'donReq_list': info}
+    template = 'admin_2/donReqTable.html'
+    return render(request, template, context)
+
+
+def triageView(request, pk):
+    donor_detail = triagePatient.objects.get(id=pk)
+    context = {'donor': donor_detail}
+    template = 'admin_2/triage-detail.html'
+    return render(request, template, context)
+
+
+def reqView(request, pk):
+    donor_detail = Requester.objects.get(id=pk)
+    context = {'donor': donor_detail}
+    template = 'admin_2/req-view.html'
+    return render(request, template, context)
+
+
+@login_required(login_url='login')
+def donReqForm(request):
+    form = DonorRequisitionFormVolunteer(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        form = DonorRequisitionFormVolunteer()
+        messages.success(request, "Form submitted successfully")
+    context = {'form': form}
+    template = 'admin_2/donReqForm.html'
+    return render(request, template, context)
+
+
+class donReqFormView(View):
+    def get(self, request):
+        form = DonorRequisitionFormVolunteer()
+        template = 'admin_2/donReqForm.html'
+        context = {'form': form}
+        return render(request, template, context)
+
+    def post(self, request, *args, **kwargs):
+        form = DonorRequisitionFormVolunteer(request.POST)
+        if form.is_valid():
+            motive = form.cleaned_data.get('donor').donor
+            if motive.motivateddonortable.num_of_don:
+                motive.motivateddonortable.num_of_don += 1
+            else:
+                motive.motivateddonortable.num_of_don = 1
+            motive.motivateddonortable.last_don_date = datetime.now()
+            motive.motivateddonortable.save()
+            form.save()
+            form = DonorRequisitionFormVolunteer()
+        context = {'form': form}
+        template = 'admin_2/donReqForm.html'
+        return render(request, template, context)
+

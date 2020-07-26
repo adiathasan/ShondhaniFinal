@@ -58,13 +58,13 @@
 	width:30px;
 	height:30px;
 }
-.gritter-title {
+gritter-title {
 	font-size:12px;
 	font-weight:bold;
 	padding:0 0 7px 0;
 	display:block;
 }
-.gritter-image {
+gritter-image {
 	width:32px;
 	height:32px;
 	float:left;

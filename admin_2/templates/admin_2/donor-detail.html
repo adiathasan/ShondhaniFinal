@@ -131,7 +131,6 @@
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="{% url 'form1' %}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic </span></a></li>
-                                <li class="sidebar-item"><a href="{% url 'form2' %}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-move-resize-variant"></i><span class="hide-menu">Extra </span></a>
@@ -203,29 +202,56 @@
                                             </tr>
                                             <tr>
                                                 <td><strong style="color: black;">Donated or not</strong></td>
-                                                <td>{{ donor.donation_status }}</td>
-                                            </tr>
-                                                                                    <tr>
-                                                <td><strong style="color: black;">Donor Name</strong></td>
-                                                <td>{{ donor.name }}</td>
+                                                <td>{{ donor.motivateddonortable.status }}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong style="color: black;">Donor Name</strong></td>
-                                                <td>{{ donor.name }}</td>
+                                                <td><strong style="color: black;">Donor age</strong></td>
+                                                <td>{{ donor.age }}</td>
                                             </tr>
-                                                                                    <tr>
-                                                <td><strong style="color: black;">Donor Name</strong></td>
-                                                <td>{{ donor.name }}</td>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">Donor sex</strong></td>
+                                                <td>{{ donor.sex }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">Donor contact number</strong></td>
+                                                <td>{{ donor.contact_number }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">Donor area</strong></td>
+                                                <td>{{ donor.area }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">Donor address</strong></td>
+                                                <td>{{ donor.address }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">comment of donor</strong></td>
+                                                <td>{{ donor.comment_of_donor }}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong style="color: black;">Donor Name</strong></td>
-                                                <td>{{ donor.name }}</td>
+                                                <td><strong style="color: black;">Donor first positive</strong></td>
+                                                <td>{{ donor.first_positive }}</td>
                                             </tr>
                                                                                     <tr>
-                                                <td><strong style="color: black;">Donor Name</strong></td>
-                                                <td>{{ donor.name }}</td>
+                                                <td><strong style="color: black;">Donor first negative</strong></td>
+                                                <td>{{ donor.first_negative }}</td>
                                             </tr>
                                             <tr>
+                                                <td><strong style="color: black;">Donor symptom date</strong></td>
+                                                <td>{{ donor.recovery_date }}</td>
+                                            </tr>
+                                                                                    <tr>
+                                                <td><strong style="color: black;">Donor hospital name</strong></td>
+                                                <td>{{ donor.hospital_name }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">volunteer name</strong></td>
+                                                <td>{{ donor.volunteer_name }}</td>
+                                            </tr>
+                                                                                    <tr>
+                                                <td><strong style="color: black;">Donor entry date</strong></td>
+                                                <td>{{ donor.entry_date }}</td>
+                                            </tr>
                                     </table>
                                 </div>
 

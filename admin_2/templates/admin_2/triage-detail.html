@@ -11,22 +11,10 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
-    <title></title>
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'extra-libs/multicheck/multicheck.css' %}">
     <link href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'libs/select2/dist/css/select2.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'libs/jquery-minicolors/jquery.minicolors.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'libs/quill/dist/quill.snow.css' %}">
-    <link href="{% static 'libs/jquery-steps/jquery.steps.css' %}" rel="stylesheet">
-    <link href="{% static 'libs/jquery-steps/steps.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
-    <link href="{% static 'libs/fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'extra-libs/calendar/calendar.css' %}" rel="stylesheet" />
     <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -114,7 +102,7 @@
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
                             </div>
@@ -126,8 +114,13 @@
                 </div>
             </nav>
         </header>
-
-       <aside class="left-sidebar" data-sidebarbg="skin5">
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin5">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -142,7 +135,10 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-move-resize-variant"></i><span class="hide-menu">Extra </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
+
+
                                 <li class="sidebar-item"><a href="{% url 'calendar' %}" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Calendar </span></a></li>
+
                             </ul>
                         </li>
                     </ul>
@@ -151,12 +147,106 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Tables</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'homeAdmin' %}>Home</a></li>
+                                    <li class="breadcrumb-item" aria-current="page">Donor tables</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Triage Details</h5>
+                                <div class="table-responsive">
+                                    <table id="zero_config" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Field</th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong style="color: black;">Name</strong></td>
+                                                <td>{{ donor.name }}</td>
+                                            <tr>
+                                                <td><strong style="color: black;">age</strong></td>
+                                                <td>{{ donor.age }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">sex</strong></td>
+                                                <td>{{ donor.sex }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">contact number</strong></td>
+                                                <td>{{ donor.contact_number }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">area</strong></td>
+                                                <td>{{ donor.area }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">hospital release dt</strong></td>
+                                                <td>{{ donor.hospital_release_dt }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">first positive dt</strong></td>
+                                                <td>{{ donor.first_positive }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong style="color: black;">hospital admit dt</strong></td>
+                                                <td>{{ donor.hospital_admit_dt }}</td>
 
-{% block form %}
-{% endblock %}
+                                    </table>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
     </div>
-          <!-- ============================================================== -->
+    <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
@@ -186,26 +276,6 @@
         $('#zero_config').DataTable();
     </script>
 
-
-    <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'js/jquery.ui.touch-punch-improved.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{% static 'libs/popper.js/dist/umd/popper.min.js' %}"></script>
-    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{% static 'libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
-    <script src="{% static 'extra-libs/sparkline/sparkline.js' %}"></script>
-    <!--Wave Effects -->
-    <script src="{% static 'js/waves.js' %}"></script>
-    <!--Menu sidebar -->
-    <script src="{% static 'js/sidebarmenu.js' %}"></script>
-    <!--Custom JavaScript -->
-    <script src="{% static 'js/custom.min.js' %}"></script>
-     <!-- this page js -->
-    <script src="{% static 'libs/moment/min/moment.min.js' %}"></script>
-    <script src="{% static 'libs/fullcalendar/dist/fullcalendar.min.js' %}"></script>
-    <script src="{% static 'js/pages/calendar/cal-init.js' %}"></script>
 
 </body>
 

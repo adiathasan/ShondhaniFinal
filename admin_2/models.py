@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 Area = (
@@ -65,7 +67,7 @@ class donorInfo(models.Model):
 
 
 class MotivatedDonorTable(models.Model):
-    donor = models.ForeignKey(donorInfo, on_delete=models.CASCADE, null=True)
+    donor = models.OneToOneField(donorInfo, on_delete=models.CASCADE, null=True)
     num_of_don = models.IntegerField(verbose_name='Number of Donation', blank=True, null=True)
     last_don_date = models.DateTimeField(verbose_name='Last Donation Date', blank=True, null=True)
     f_pos_ava = models.IntegerField(null=True, blank=True, verbose_name='Availability from first positive test')
@@ -74,7 +76,7 @@ class MotivatedDonorTable(models.Model):
     status = models.CharField(null=True, blank=True, max_length=200)
 
     def __str__(self):
-        return f'motivated donor : {self.donor.name} id: {self.donor.primary_key}'
+        return f'motivated donor : {self.donor.name} id: {self.donor.id}'
 
 
 class NoticeBoard(models.Model):
@@ -108,7 +110,7 @@ class Requester(models.Model):
     hospital_name = models.CharField(max_length=200, blank=True, null=True)
     regional_field = models.CharField(max_length=50, null=False, blank=False, choices=CATEGORY_reg, verbose_name='Area')
     admission_registration_no = models.CharField(max_length=100, blank=False, null=False)
-    plasma_req_form_img = models.ImageField(blank=True, null=True)
+    plasma_req_form_img = models.FileField(blank=True, null=True)
     emergency_contact_persons_name = models.CharField(blank=False, null=True, max_length=100)
     comment_of_patient = models.TextField(null=True, blank=True)
     reference = models.CharField(max_length=100, blank=True, null=True)
@@ -141,8 +143,17 @@ class triagePatient(models.Model):
 
 
 class DonorRequesterRelation(models.Model):
-    donor = models.ForeignKey(donorInfo, on_delete=models.CASCADE)
+    donor = models.ForeignKey(MotivatedDonorTable, on_delete=models.CASCADE)
     requester = models.ForeignKey(Requester, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'donor : {self.donor.name} || requester : {self.requester.name}'
+        return f'donor : {self.donor.donor.name} || requester : {self.requester.name}'
+
+    def save(self, *args, **kwargs):
+        if self.donor.num_of_don:
+            self.donor.num_of_don += 1
+        else:
+            self.donor.num_of_don = 1
+        self.donor.last_don_date = datetime.now()
+        self.donor.save()
+        super(DonorRequesterRelation, self).save(*args, **kwargs)

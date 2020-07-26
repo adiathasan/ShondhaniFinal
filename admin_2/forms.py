@@ -392,7 +392,6 @@ class TriageFormVolunteer(forms.ModelForm):
     def clean_age(self, *args, **kwargs):
         sex = self.cleaned_data.get('sex')
         age = self.cleaned_data.get('age')
-        print(sex, age, type(age))
         if sex == 'male':
             if 18 > age or age > 50:
                 raise forms.ValidationError("Range of male must be between [18-50]")
@@ -418,3 +417,4 @@ class DonorRequisitionFormVolunteer(forms.ModelForm):
         model = DonorRequesterRelation
 
         fields = ['donor', 'requester']
+
