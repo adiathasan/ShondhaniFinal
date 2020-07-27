@@ -1,1 +1,1 @@
-web: gunicorn ecom.wsgi
+web: gunicorn shondhaniFinal.wsgi
