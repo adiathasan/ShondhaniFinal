@@ -28,7 +28,7 @@ SECRET_KEY = '*fl-m9nrx(#j6gex#ps$4_!o=y2d9t*u)z8b@62*$k4qfb%a@h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1', 'sandhani-bd.herokuapp.com']
 
 
 # Application definition
