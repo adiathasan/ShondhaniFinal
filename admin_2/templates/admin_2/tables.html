@@ -204,10 +204,13 @@
                                             {% if request.user.is_authenticated %}
                                             {% if donor.regional_field == request.user.email or request.user.is_superuser %}
                                             <tr>
-                                                <td><a href="{% url 'donor_detail' donor.donor.id %}" class="btn btn-info">{{ donor.donor.name }}</a></td>
+                                                <td><a href="{% url 'donor_detail' donor.donor.id %}"> <i class="fas fa-eye">|{{ donor.donor.name }}</i></a></td>
                                                 <td><strong style="color: red;">{{ donor.donor.blood_group }}</strong></td>
-                                                <td>
-                                                    <strong style="color: green;">{{donor.status}}</strong>
+                                                <td>{% if donor.status %}
+                                                    <strong style="color: green;">ready</strong>
+                                                    {% else %}
+                                                    <strong style="color: red;">Not ready</strong>
+                                                    {% endif %}
                                                 </td>
                                                 <td><strong style="color: black;">{{ donor.s_res_ava }}</strong></td>
                                                 <td><strong style="color: black;">{{ donor.f_neg_ava }}</strong></td>

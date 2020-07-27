@@ -202,7 +202,11 @@
                                             </tr>
                                             <tr>
                                                 <td><strong style="color: black;">Donated or not</strong></td>
-                                                <td>{{ donor.motivateddonortable.status }}</td>
+                                                <td>{{ donor.donation_status }}</td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td><strong style="color: black;">Times donated</strong></td>
+                                                <td>{{ donor.motivateddonortable.num_of_don }}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong style="color: black;">Donor age</strong></td>
@@ -227,6 +231,11 @@
                                                                                         <tr>
                                                 <td><strong style="color: black;">comment of donor</strong></td>
                                                 <td>{{ donor.comment_of_donor }}</td>
+                                            </tr>
+
+                                             <tr>
+                                                <td><strong style="color: black;">Last donated</strong></td>
+                                                <td>{{ donor.last_donation_date }}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong style="color: black;">Donor first positive</strong></td>

@@ -203,7 +203,7 @@
                                             {% for donor in req_list %}
                                             <tr>
 <!--                                                {% url 'donor_detail' donor.id %}-->
-                                                <td><a href=" {% url 'reqDetail' donor.id %}" >{{ donor.name }}</a></td>
+                                                <td><a href=" {% url 'reqDetail' donor.id %}" > <i class="fas fa-eye">|{{ donor.name }}</i></a></td>
                                                 <td><strong style="color: red;">{{ donor.blood_group }}</strong></td>
                                                 <td>
                                                     <strong style="color: green;">{{donor.admission_registration_no}}</strong>

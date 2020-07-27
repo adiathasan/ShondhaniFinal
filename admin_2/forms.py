@@ -7,11 +7,34 @@ from .models import *
 
 DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 
-CATEGORY = (
-    ('khulna', 'khulna'),
-    ('rajshahi', 'rajshahi'),
-    ('dhaka', 'dhaka'),
-    ('chittagong', 'chittagong'),
+
+unit = (
+       ('AMUMCU', 'AMUMCU'),
+       ('BMCU', 'BMCU'),
+       ('CMCU', 'CMCU'),
+       ('CoxMCU', 'CoxMCU'),
+       ('DDCU', 'DDCU'),
+       ('EWM&UpDCU', 'EWM'),
+       ('FMCU', 'FMCU'),
+       ('GSVMCU', 'GSVMCU'),
+       ('JRRMCU', 'JRRMCU'),
+       ('JMCU', 'JMCU'),
+       ('KuMCU', 'KuMCU'),
+       ('MARMCU', 'MARMCU'),
+       ('MMCU', 'MMCU'),
+       ('PKMCU', 'PKMCU'),
+       ('RMCU', 'RMCU'),
+       ('RmMCU', 'RmMCU'),
+       ('RpMCU', 'RpMCU'),
+       ('SBMCU', 'SBMCU'),
+       ('SMMAMCU', 'SMMAMCU'),
+       ('SOMCU', 'SOMCU'),
+       ('SSMCU', 'SSMCU'),
+       ('SSNIMCU', 'SSNIMCU'),
+       ('ShSMCU', 'ShSMCU'),
+       ('SZMCU', 'SZMCU'),
+
+
 )
 
 
@@ -26,7 +49,7 @@ class CustomUserCreationForm(forms.Form):
     email = forms.EmailField(label='Enter email', widget=forms.EmailInput)
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
-    regional_field = forms.CharField(max_length=50, label='region', widget=forms.Select(choices=CATEGORY))
+    regional_field = forms.CharField(max_length=50, label='region', widget=forms.Select(choices=unit))
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
@@ -417,4 +440,10 @@ class DonorRequisitionFormVolunteer(forms.ModelForm):
         model = DonorRequesterRelation
 
         fields = ['donor', 'requester']
+
+    def clean_donor(self, *args, **kwargs):
+        data = self.cleaned_data.get('donor')
+        if not data.status:
+            raise forms.ValidationError(f'The donor is not ready to donate. Last donated: {data.last_don_date}')
+        return data
 

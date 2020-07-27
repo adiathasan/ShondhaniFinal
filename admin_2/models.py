@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.db import models
 
 sex_cat = (
@@ -9,101 +7,96 @@ sex_cat = (
 )
 
 Area = (
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
+    ('Barguna', 'Barguna'),
+    ('Barisal', 'Barisal'),
+    ('Bhola', 'Bhola'),
+    ('Jhalokati', 'Jhalokati'),
+    ('Patuakhali', 'Patuakhali'),
+    ('Pirojpur', 'Pirojpur'),
+    ('Bandarban', 'Bandarban'),
+    ('Brahmanbaria', 'Brahmanbaria'),
+    ('Chandpur', 'Chandpur'),
+    ('Chittagong', 'Chittagong'),
+    ('Comilla', 'Comilla'),
+    ("Cox's Bazar", "Cox's Bazar"),
+    ('Feni', 'Feni'),
+    ('Khagrachari', 'Khagrachari'),
+    ('Lakshmipur', 'Lakshmipur'),
+    ('Noakhali', 'Noakhali'),
+    ('Rangamati', 'Rangamati'),
+    ('Dhaka', 'Dhaka'),
+    ('Faridpur', 'Faridpur'),
+    ('Gazipur', 'Gazipur'),
+    ('Gopalganj', 'Gopalganj'),
+    ('Kishoreganj', 'Kishoreganj'),
+    ('Madaripur', 'Madaripur'),
+    ('Manikganj', 'Manikganj'),
+    ('Munshiganj', 'Munshiganj'),
+    ('Narayanganj', 'Narayanganj'),
+    ('Narsingdi', 'Narsingdi'),
+    ('Rajbari', 'Rajbari'),
+    ('Shariatpur', 'Shariatpur'),
+    ('Tangail', 'Tangail'),
+    ('Bagerhat', 'Bagerhat'),
+    ('Chuadanga', 'Chuadanga'),
+    ('Jessore', 'Jessore'),
+    ('Jhenaidah', 'Jhenaidah'),
+    ('Khulna', 'Khulna'),
+    ('Kushtia', 'Kushtia'),
+    ('Magura', 'Magura'),
+    ('Meherpur', 'Meherpur'),
+    ('Narail', 'Narail'),
+    ('Satkhira', 'Satkhira'),
+    ('Jamalpur', 'Jamalpur'),
+    ('Mymensingh', 'Mymensingh'),
+    ('Netrokona', 'Netrokona'),
+    ('Sherpur', 'Sherpur'),
+    ('Bogra', 'Bogra'),
+    ('Jaipurhat', 'Jaipurhat'),
+    ('Naogaon', 'Naogaon'),
+    ('Natore', 'Natore'),
+    ('Nawabganj', 'Nawabganj'),
+    ('Pabna', 'Pabna'),
+    ('Rajshahi', 'Rajshahi'),
+    ('Sirajganj', 'Sirajganj'),
+    ('Dinajpur', 'Dinajpur'),
+    ('Gaibandha', 'Gaibandha'),
+    ('Kurigram', 'Kurigram'),
+    ('Lalmonirhat', 'Lalmonirhat'),
+    ('Nilphamari', 'Nilphamari'),
+    ('Panchagarh', 'Panchagarh'),
+    ('Rangpur', 'Rangpur'),
+    ('Thakurgaon', 'Thakurgaon'),
+    ('Habiganj', 'Habiganj'),
+    ('Moulvibazar', 'Moulvibazar'),
+    ('Sunamganj', 'Sunamganj'),
+    ('Sylhet', 'Sylhet'),
 )
-
 unit = (
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
+    ('AMUMCU', 'AMUMCU'),
+    ('BMCU', 'BMCU'),
+    ('CMCU', 'CMCU'),
+    ('CoxMCU', 'CoxMCU'),
+    ('DDCU', 'DDCU'),
+    ('EWM&UpDCU', 'EWM'),
+    ('FMCU', 'FMCU'),
+    ('GSVMCU', 'GSVMCU'),
+    ('JRRMCU', 'JRRMCU'),
+    ('JMCU', 'JMCU'),
+    ('KuMCU', 'KuMCU'),
+    ('MARMCU', 'MARMCU'),
+    ('MMCU', 'MMCU'),
+    ('PKMCU', 'PKMCU'),
+    ('RMCU', 'RMCU'),
+    ('RmMCU', 'RmMCU'),
+    ('RpMCU', 'RpMCU'),
+    ('SBMCU', 'SBMCU'),
+    ('SMMAMCU', 'SMMAMCU'),
+    ('SOMCU', 'SOMCU'),
+    ('SSMCU', 'SSMCU'),
+    ('SSNIMCU', 'SSNIMCU'),
+    ('ShSMCU', 'ShSMCU'),
+    ('SZMCU', 'SZMCU'),
 
 )
 
@@ -138,7 +131,7 @@ class donorInfo(models.Model):
     hospital_name = models.CharField(max_length=200, blank=True, null=True)
     first_positive = models.DateTimeField(blank=False, null=True)
     first_negative = models.DateTimeField(blank=False, null=True)
-    recovery_date = models.DateTimeField(blank=False, null=True)
+    recovery_date = models.DateTimeField(blank=False, null=True, verbose_name='symptom date')
     convinced_before = models.BooleanField(null=True, blank=True)
     m_l = (
         ('Highly Interested', 'Highly Interested'),
@@ -188,7 +181,7 @@ class Requester(models.Model):
     reference = models.CharField(max_length=100, blank=True, null=True)
     vol_name = models.CharField(max_length=50, blank=True, null=True, verbose_name='Volunteer Name')
     unit_name = models.CharField(max_length=100, blank=False, null=False, choices=unit)
-    area = models.CharField(null=True, blank=False, choices=Area, max_length=40)
+    area = models.CharField(null=True, blank=False, choices=Area, max_length=60)
 
     def __str__(self):
         return self.name
@@ -216,12 +209,3 @@ class DonorRequesterRelation(models.Model):
 
     def __str__(self):
         return f'donor : {self.donor.donor.name} || requester : {self.requester.name}'
-
-    def save(self, *args, **kwargs):
-        if self.donor.num_of_don:
-            self.donor.num_of_don += 1
-        else:
-            self.donor.num_of_don = 1
-        self.donor.last_don_date = datetime.now()
-        self.donor.save()
-        super(DonorRequesterRelation, self).save(*args, **kwargs)

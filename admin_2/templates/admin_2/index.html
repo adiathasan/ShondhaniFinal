@@ -24,7 +24,11 @@
         <li class="bg_ls"> <a href="#"> <i class="icon-tint"></i> AB+ donor<strong>({{ab_pos}})</strong></a> </li>
         <li class="bg_lb"> <a href="#"> <i class="icon-tint"></i>AB- donor<strong>({{ab_neg}})</strong></a> </li>
         <li class="bg_lr"> <a href="#"> <i class="icon-th-list"></i> All donor<strong>({{allDonor}})</strong></a> </li>
+        {% if not user.is_superuser %}
         <li class="bg_lg"> <a href="#"> <i class="icon-tint"></i> {{user.email}} unit donor<strong>({{ava_don}})</strong></a> </li>
+        {% else %}
+        <li class="bg_lg"> <a href="#"> <i class="icon-tint"></i> Admin unit donor<strong>({{ava_don}})</strong></a> </li>
+        {% endif %}
       </ul>
     </div>
 <!--End-Action boxes-->    
@@ -42,8 +46,8 @@
             </div>
             <div class="span3">
               <ul class="site-stats">
-                <li class="bg_lh"><i class="icon-user"></i> <strong>2540</strong> <small>Total Users</small></li>
-                <li class="bg_lh"><i class="icon-plus"></i> <strong>120</strong> <small>New Users </small></li>
+                <li class="bg_lh"><i class="icon-user"></i> <strong>{{all_users}}</strong> <small>Total Users</small></li>
+                <li class="bg_lh"><i class="icon-plus"></i> <strong>{{total_don}}</strong> <small>Total Donated </small></li>
               </ul>
             </div>
           </div>
@@ -63,7 +67,7 @@
               <li>
                 <div class="article-post">
                   {% for notice in all_notice %}
-                  <p><a href="#">{{notice}}</a> </p>
+                  <p><a href="#">{{notice.id}}.{{notice}}</a> </p>
                   {% endfor %}
                 </div>
               </li>

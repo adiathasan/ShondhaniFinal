@@ -24,6 +24,8 @@ def homeAdmin(request):
     b_pos = allDonor.filter(blood_group='B+').count()
     b_neg = allDonor.filter(blood_group='B-').count()
     ava_don = allDonor.filter(donor_status=True).count()
+    all_users = User.objects.count()
+    total_don = DonorRequesterRelation.objects.count()
     motDon_obj = MotivatedDonorTable.objects.all()
     now = datetime.datetime.now(pytz.timezone('Asia/Dhaka'))
     for obj in motDon_obj:
@@ -33,24 +35,28 @@ def homeAdmin(request):
         fn_days = int(delta_fn / 86400)
         delta_sr = (now - obj.donor.first_negative).total_seconds()
         sr_days = int(delta_sr / 86400)
-        if obj.last_don_date is None:
-            obj.last_don_date = now - datetime.timedelta(days=31)
-        delta_last = (now - obj.last_don_date).total_seconds()
-        last_days = int(delta_last / 86400)
+        if obj.last_don_date:
+            # obj.last_don_date = now - datetime.timedelta(days=31)
+            delta_last = (now - obj.last_don_date).total_seconds()
+            last_days = int(delta_last / 86400)
+        else:
+            last_days = 0
         if not obj.status:
-            if fp_days > 28 and fn_days > 14 and sr_days > 28 and last_days > 30:
+            if fp_days > 28 and fn_days > 14 and sr_days > 28:
+                obj.status = True
+                obj.donor.donor_status = True
+            if last_days > 30:
                 obj.status = True
                 obj.donor.donor_status = True
         obj.f_pos_ava = fp_days
         obj.f_neg_ava = fp_days
         obj.s_res_ava = sr_days
-        obj.last_don_date = None
         obj.save()
         obj.donor.save()
 
     context = {'a_pos': a_pos, 'a_neg': a_neg, 'ab_pos': ab_pos, 'ab_neg': ab_neg, 'o_pos': o_pos,
                'o_neg': o_neg, 'b_pos': b_pos, 'b_neg': b_neg, 'allDonor': allDonor_count,
-               'all_notice': all_notice, 'ava_don': ava_don}
+               'all_notice': all_notice, 'ava_don': ava_don, 'all_users': all_users, 'total_don': total_don}
     template = 'admin_2/index.html'
     return render(request, template, context)
 
