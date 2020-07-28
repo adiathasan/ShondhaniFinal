@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*fl-m9nrx(#j6gex#ps$4_!o=y2d9t*u)z8b@62*$k4qfb%a@h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['sandhani-bd.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -128,7 +128,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 
@@ -136,5 +136,4 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'live-media', 'media')
 
-
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
