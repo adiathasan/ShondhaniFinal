@@ -194,8 +194,8 @@
                                                 <th><strong style="color: black;">Name</strong></th>
                                                 <th><strong style="color: black;">Blood group</strong></th>
                                                 <th><strong style="color: black;">Donor status</strong></th>
-                                                <th><strong style="color: black;">Day from 1st symptom</strong></th>
-                                                <th><strong style="color: black;">Day from 1st negative</strong></th>
+                                                <th><strong style="color: black;">Availability from symptom resolution date</strong></th>
+                                                <th><strong style="color: black;">Availability from 1st negative (-VE) Test:</strong></th>
                                                 <th><strong style="color: black;">Phone Number</strong></th>
                                             </tr>
                                         </thead>
@@ -212,8 +212,8 @@
                                                     <strong style="color: red;">Not ready</strong>
                                                     {% endif %}
                                                 </td>
-                                                <td><strong style="color: black;">{{ donor.s_res_ava }}</strong></td>
-                                                <td><strong style="color: black;">{{ donor.f_neg_ava }}</strong></td>
+                                                <td><strong style="color: black;">{{ donor.s_res_ava }}  (Days Ago)</strong></td>
+                                                <td><strong style="color: black;">{{ donor.f_neg_ava }}  (Days Ago)</strong></td>
                                                 <td><strong style="color: black;">{{ donor.donor.contact_number }}</strong></td>
                                             </tr>
                                             {% endif %}
@@ -225,8 +225,8 @@
                                                 <th>Name</th>
                                                 <th>Blood group</th>
                                                 <th>Donor status</th>
-                                                <th>Day from 1st symptom</th>
-                                                <th>Day from 1st negative</th>
+                                                <th>Availability from symptom resolution date</th>
+                                                <th>Availability from 1st negative (-VE) Test:</th>
                                                 <th>Phone Number</th>
                                             </tr>
                                         </tfoot>

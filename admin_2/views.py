@@ -7,7 +7,6 @@ from .forms import *
 from .models import *
 from django.views import View
 import datetime
-from django.forms.models import inlineformset_factory
 
 
 @login_required(login_url='login')
@@ -40,14 +39,17 @@ def homeAdmin(request):
             delta_last = (now - obj.last_don_date).total_seconds()
             last_days = int(delta_last / 86400)
         else:
-            last_days = 0
+            last_days = 31
         if not obj.status:
-            if fp_days > 28 and fn_days > 14 and sr_days > 28:
+            if fp_days > 40 and fn_days > 14 and sr_days > 28:
                 obj.status = True
                 obj.donor.donor_status = True
             if last_days > 30:
                 obj.status = True
                 obj.donor.donor_status = True
+            else:
+                obj.status = False
+                obj.donor.donor_status = False
         obj.f_pos_ava = fp_days
         obj.f_neg_ava = fp_days
         obj.s_res_ava = sr_days
@@ -196,7 +198,6 @@ def motDonForm(request):
     form = MotivatedDonorFormVolunteer(request.POST or None, request.FILES or None)
     if form.is_valid():
         donor = form.cleaned_data.get('donor')
-        print(donor.name)
         date_f_p = donor.first_positive
         date_f_n = donor.first_negative
         date_s_r = donor.recovery_date
@@ -249,18 +250,6 @@ def reqView(request, pk):
     context = {'donor': donor_detail}
     template = 'admin_2/req-view.html'
     return render(request, template, context)
-
-
-# @login_required(login_url='login')
-# def donReqForm(request):
-#     form = DonorRequisitionFormVolunteer(request.POST or None, request.FILES or None)
-#     if form.is_valid():
-#         form.save()
-#         form = DonorRequisitionFormVolunteer()
-#         messages.success(request, "Form submitted successfully")
-#     context = {'form': form}
-#     template = 'admin_2/donReqForm.html'
-#     return render(request, template, context)
 
 
 class donReqFormView(View):
