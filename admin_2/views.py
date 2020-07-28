@@ -1,6 +1,6 @@
 import pytz
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -35,7 +35,6 @@ def homeAdmin(request):
         delta_sr = (now - obj.donor.first_negative).total_seconds()
         sr_days = int(delta_sr / 86400)
         if obj.last_don_date:
-            # obj.last_don_date = now - datetime.timedelta(days=31)
             delta_last = (now - obj.last_don_date).total_seconds()
             last_days = int(delta_last / 86400)
         else:
