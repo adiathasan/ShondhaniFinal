@@ -26,7 +26,7 @@ SECRET_KEY = '*fl-m9nrx(#j6gex#ps$4_!o=y2d9t*u)z8b@62*$k4qfb%a@h'
 import socket
 
 DEBUG = False
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", 'sandhani-bd.herokuapp.com']
+ALLOWED_HOSTS = ['sandhani-bd.herokuapp.com']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
