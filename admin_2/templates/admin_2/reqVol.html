@@ -32,7 +32,7 @@
                         {% csrf_token %}
 
                         <div class="form-row">
-                            <div class="name">Full name</div>
+                            <div class="name">Patient Name</div>
                             <div class="value input--style-6">
                                 {{form.name}} <span style="color: red;">{{form.name.errors}}</span>
                             </div>
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Emergency contact no</div>
+                            <div class="name">Emergency Contact Number</div>
                             <div class="value">
                                 <div class="input-group input&#45;&#45;style-6">
                                     {{form.emergency_contact}}<span style="color: red;">{{form.emergency_contact.errors}}</span>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                                                 <div class="form-row">
-                            <div class="name">Image of requisition</div>
+                            <div class="name">Plasma Requisition Form Image</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.plasma_req_form_img}}<span style="color: red;">{{form.plasma_req_form_img.errors}}</span>
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                                                 <div class="form-row">
-                            <div class="name">comment of patient</div>
+                            <div class="name">Comment</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.comment_of_patient}}<span style="color: red;">{{form.comment_of_patient.errors}}</span>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">reference</div>
+                            <div class="name">Reference</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.reference}}<span style="color: red;">{{form.reference.errors}}</span>
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                                                <div class="form-row">
+                        <div class="form-row">
                             <div class="name">volunteer name</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
@@ -120,16 +120,18 @@
                                 </div>
                             </div>
                         </div>
-                                                <div class="form-row">
+                          <div class="form-row">
                             <div class="name">unit name</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.unit_name}}<span style="color: red;">{{form.unit_name.errors}}</span>
                                 </div>
                             </div>
-                             <div class="value">
-                                <button class="btn  btn--blue-2" type="submit">Submit</button>
-                            </div>
+                        </div>
+                        <div class="form-row">
+                           <div class="value">
+                                <button class="btn  btn-info btn-lg" type="submit">Submit</button>
+                             </div>
                         </div>
                     </form>
                 </div>

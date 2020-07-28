@@ -5,7 +5,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from .models import *
 
-DateInput = partial(forms.DateInput, {'class': 'datepicker'})
+DateInput = partial(forms.DateInput, {'class': 'datepicker', 'placeholder': 'mm/dd/yyyy'})
 
 
 unit = (
@@ -33,7 +33,6 @@ unit = (
        ('SSNIMCU', 'SSNIMCU'),
        ('ShSMCU', 'ShSMCU'),
        ('SZMCU', 'SZMCU'),
-
 
 )
 
@@ -110,6 +109,15 @@ class DonorFormPublic(forms.ModelForm):
                   'area', 'first_positive', 'first_negative', 'recovery_date',
                   'disease', 'occupation', 'comment_of_donor']
 
+    def clean_Conceived_before(self):
+        data_sex = self.cleaned_data.get('sex')
+        data_con = self.cleaned_data.get('Conceived_before')
+        if data_con:
+            if data_sex != 'female':
+                raise forms.ValidationError('Only eligible for female')
+        return data_con
+
+
     def clean_disease(self):
         disease = self.cleaned_data.get('disease')
         all_disease = []
@@ -182,6 +190,13 @@ class DonorFormVolunteer(forms.ModelForm):
                   'area', 'first_positive', 'first_negative', 'recovery_date',
                   'disease', 'occupation', 'comment_of_donor', 'volunteer_name',
                   'regional_field']
+
+    def clean_Conceived_before(self):
+        data_sex = self.cleaned_data.get('sex')
+        data_con = self.cleaned_data.get('Conceived_before')
+        if data_sex == 'female':
+            return data_con
+        raise forms.ValidationError('Only eligible for female')
 
     def clean_disease(self):
         disease = self.cleaned_data.get('disease')

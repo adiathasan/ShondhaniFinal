@@ -112,7 +112,6 @@ def formAdmin(request):
     return render(request, template, context)
 
 
-@login_required(login_url='login')
 def TriageVol(request):
     form = TriageFormVolunteer(request.POST or None)
     if form.is_valid():

@@ -28,7 +28,7 @@
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
             <div class="card-heading">
-                    <h2 class="title">Donor Form</h2>
+                    <h2 class="title">Donor Form  (Volunteer)</h2>
             </div>
             <div class="card card-6">
                 <div class="card-body">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Full name</div>
+                            <div class="name">Donor Name</div>
                             <div class="value input--style-6">
                                 {{form.name}} <span style="color: red;">{{form.name.errors}}</span>
                             </div>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">contact no</div>
+                            <div class="name">Contact Number</div>
                             <div class="value">
                                 <div class="input-group input&#45;&#45;style-6">
                                     {{form.contact_number}}<span style="color: red;">{{form.contact_number.errors}}</span>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">address</div>
+                            <div class="name">Address</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.address}}<span style="color: red;">{{form.address.errors}}</span>
@@ -103,23 +103,23 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">first_positive</div>
+                            <div class="name">Date of 1st Positive(+ve) COVID-19 test [Sample Collection Date]</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.first_positive}}<span style="color: red;">{{form.first_positive.errors}}</span>
                                 </div>
                             </div>
                         </div>
-                                                <div class="form-row">
-                            <div class="name">first_negative</div>
-                            <div class="value">
-                                <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.first_negative}}<span style="color: red;">{{form.first_negative.errors}}</span>
+                            <div class="form-row">
+                                <div class="name">Date of 1st Negative(-ve) COVID-19 test [Sample Collection Date]</div>
+                                <div class="value">
+                                    <div class="input-group js-input-file input&#45;&#45;style-6">
+                                        {{form.first_negative}}<span style="color: red;">{{form.first_negative.errors}}</span>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">recovery_date</div>
+                            <div class="name">Recovery Date</div>
                             <div class="value">
                                 <div class="input-group js-input-file input&#45;&#45;style-6">
                                     {{form.recovery_date}}<span style="color: red;">{{form.recovery_date.errors}}</span>
@@ -150,21 +150,27 @@
                                     {{form.comment_of_donor}}<span style="color: red;">{{form.comment_of_donor.errors}}</span>
                                 </div>
                             </div>
-                            <div class="name">volunteer name</div>
-                            <div class="value">
-                                <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.volunteer_name}}<span style="color: red;">{{form.volunteer_name.errors}}</span>
+                        </div>
+                            <div class="form-row">
+                                <div class="name">volunteer name</div>
+                                <div class="value">
+                                    <div class="input-group js-input-file input&#45;&#45;style-6">
+                                        {{form.volunteer_name}}<span style="color: red;">{{form.volunteer_name.errors}}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="name">Unit</div>
-                            <div class="value">
-                                <div class="input-group js-input-file input&#45;&#45;style-6">
-                                    {{form.regional_field}}<span style="color: red;">{{form.regional_field.errors}}</span>
+                            <div class="form-row">
+                                <div class="name">Unit</div>
+                                <div class="value">
+                                    <div class="input-group js-input-file input&#45;&#45;style-6">
+                                        {{form.regional_field}}<span style="color: red;">{{form.regional_field.errors}}</span>
+                                    </div>
                                 </div>
                             </div>
-                             <div class="value">
-                                <button class="btn  btn--blue-2" type="submit">Submit</button>
-                            </div>
+                        <div class="form-row">
+                           <div class="value">
+                                <button class="btn  btn-info btn-lg" type="submit">Submit</button>
+                             </div>
                         </div>
                     </form>
                 </div>
